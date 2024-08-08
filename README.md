@@ -56,3 +56,7 @@ Os critérios de avaliação incluirão:
 Boa sorte e estamos ansiosos para ver seu trabalho!
 
 Este desafio faz parte do processo seletivo do projeto Frontend Fusion para a vaga de Desenvolvedor React Júnior.
+
+## Deploy
+
+- https://desafio-galeria-de-imagem-frontendfusion-bns4vp2qb.vercel.app/
