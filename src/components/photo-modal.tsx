@@ -52,10 +52,8 @@ export function PhotoModal({ photo }: PhotoModalProps) {
             <li className="flex justify-between"><span className="font-bold">Altura:</span> {photo.height}</li>
           </ul>
         </Dialog.Description>
-        <Dialog.Close className="w-full bg-emerald-500 p-3 mt-4 rounded-md" asChild>
-          <button>
-            <span className="sr-only">Voltar</span>
-          </button>
+        <Dialog.Close className="w-full bg-emerald-500 p-3 mt-4 rounded-md" >
+          Voltar
         </Dialog.Close>
 
       </div> 
