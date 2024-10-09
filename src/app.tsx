@@ -33,6 +33,9 @@ export  function App() {
           <PhotoGallery photos={photos ?? []} isLoading={isLoading}/>  
         )}
       </main>
+      <footer>
+       <p className="text-center py-3 border-t">© {new Date().getFullYear()} Desafio da galera. Todos os direitos reservados.</p>
+      </footer>
     </>
   );
 }
