@@ -16,7 +16,7 @@ export  function App() {
   const getFavorite = useStore((state) => state.getFavorite);
   const photos = useStore(store => store.photos)
 
-  const { data: photo ,isLoading} = useQuery<photo[]>({ queryKey: ['photo'], queryFn: getPhotos })
+  const { data: photo ,isLoading, error} = useQuery<photo[]>({ queryKey: ['photo'], queryFn: getPhotos })
 
 
   useEffect(() => {
@@ -25,9 +25,13 @@ export  function App() {
   return (
     <>
       <Header setGallerySection={setGallerySection} gallerySection={gallerySection} />
-      <main >
-       
-        {gallerySection === "photos" ?  <PhotoGallery photos={photo ?? []} isLoading={isLoading}/> :  <PhotoGallery photos={photos ?? []} isLoading={isLoading}/>  }
+      <main  className="pb-10">
+        {gallerySection === "photos" ?(
+          <PhotoGallery photos={photo ?? []} isLoading={isLoading} error={error}/> 
+        )  
+        :(
+          <PhotoGallery photos={photos ?? []} isLoading={isLoading}/>  
+        )}
       </main>
     </>
   );

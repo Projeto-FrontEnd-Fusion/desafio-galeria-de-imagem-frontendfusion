@@ -16,7 +16,7 @@ export function Header({gallerySection, setGallerySection }:HeaderProps) {
         <ul className="flex items-center justify-around h-full border-b">
           <button onClick={() => setGallerySection('photos')}>
             <li className={clsx("flex justify-center gap-2", {
-                'font-bold ': gallerySection === 'photos', // Classe quando a seção ativa é 'photos'
+                'font-bold ': gallerySection === 'photos', 
             })}>
               <Camera className="size-5" />
               Photos

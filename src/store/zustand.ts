@@ -3,9 +3,8 @@ import type { photo } from "../@types/photo";
 
 export interface Favorites {
   photos: photo[];
-  addFavorite: (photo: photo) => void;
+  toggleFavorite: (photo: photo) => void;
   getFavorite: () => photo[];
-  removeFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean; 
 
 }
@@ -27,28 +26,21 @@ export const useStore = create<Favorites>((set, get) => ({
     return data; 
   },
 
-  addFavorite: (newPhoto: photo) => {
+  toggleFavorite: (newPhoto: photo) => {
     const { photos } = get();
   
+    
     const isAlreadyFavorite = photos.some(photo => photo.id === newPhoto.id);
-    if (isAlreadyFavorite) return; 
   
-    const updatedPhotos = [...photos, newPhoto];
+    let updatedPhotos;
     
+    if (isAlreadyFavorite) {
+      updatedPhotos = photos.filter(photo => photo.id !== newPhoto.id);
+    } else {
+      updatedPhotos = [...photos, newPhoto];
+    }
     set({ photos: updatedPhotos });
   
-    localStorage.setItem('photo-gallery', JSON.stringify(updatedPhotos));
-  },
-
-  removeFavorite: (photoId: string) => {
-    const { photos } = get();
-
-    
-    const updatedPhotos = photos.filter(photo => photo.id !== photoId);
-    
-    
-    set({ photos: updatedPhotos });
-
     localStorage.setItem('photo-gallery', JSON.stringify(updatedPhotos));
   },
 

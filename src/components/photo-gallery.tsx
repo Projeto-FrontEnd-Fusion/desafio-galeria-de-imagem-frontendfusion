@@ -6,12 +6,17 @@ import { PhotoModal } from "./photo-modal";
 interface PhotoGalleryProps {
   photos: photo[]
   isLoading: boolean
+  error?: Error | null
 }
 
-export function PhotoGallery({ photos ,isLoading} : PhotoGalleryProps) {
+export function PhotoGallery({ error,photos ,isLoading} : PhotoGalleryProps) {
   return (
     <>
-    {photos.length === 0 ? (
+    {error && (
+        <p className="text-2xl text-center mt-10 font-semibold">Falha ao buscar imagens tente mais tarde.</p>
+
+    )}
+    {!error && !isLoading && photos.length === 0 ? (
         <p className="text-2xl text-center mt-10 font-semibold">Não há imagens em sua galeria.</p>
     ): (
       <div className="grid grid-cols-4  md:grid-cols-3 lg:grid-cols-4 mt-3 gap-1 px-5 md:px-10 h-full">

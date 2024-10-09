@@ -8,7 +8,7 @@ interface PhotoModalProps {
 }
 
 export function PhotoModal({ photo }: PhotoModalProps) {
-  const addFavorite = useStore((state) => state.addFavorite);
+  const addFavorite = useStore((state) => state.toggleFavorite);
   const isFavorite = useStore((state) => state.isFavorite);
 
 
@@ -26,6 +26,7 @@ export function PhotoModal({ photo }: PhotoModalProps) {
           <Dialog.Close className="cursor-pointer">
             <ArrowLeft className="size-6" aria-label="Fechar modal" />
           </Dialog.Close>
+          <Dialog.Title className="font-bold">Galeria</Dialog.Title>
           <button
             onClick={() => addFavorite(photo)}
             aria-label={favorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
@@ -41,14 +42,16 @@ export function PhotoModal({ photo }: PhotoModalProps) {
           src={photo.download_url} 
           height={460} 
           width={650}
-          className="w-full mt-6 rounded-md md:h-[460px]" 
+          className="w-full mt-6 rounded-md h-52 md:h-[460px]" 
           alt={`Foto de autor ${photo.author}`}
         />
-        <ul className="rounded-sm px-2 py-4 w-full flex flex-col gap-2" id="photo-modal-description">
-          <li className="flex justify-between"><span className="font-bold">Autor:</span> {photo.author}</li>
-          <li className="flex justify-between"><span className="font-bold">Largura:</span> {photo.width}</li>
-          <li className="flex justify-between"><span className="font-bold">Altura:</span> {photo.height}</li>
-        </ul>
+        <Dialog.Description className="w-full">
+          <ul className="rounded-sm px-2 py-4 w-full flex flex-col gap-2">
+            <li className="flex justify-between"><span className="font-bold">Autor:</span> {photo.author}</li>
+            <li className="flex justify-between"><span className="font-bold">Largura:</span> {photo.width}</li>
+            <li className="flex justify-between"><span className="font-bold">Altura:</span> {photo.height}</li>
+          </ul>
+        </Dialog.Description>
         <Dialog.Close className="w-full bg-emerald-500 p-3 mt-4 rounded-md" aria-label="Voltar">
           Voltar
         </Dialog.Close>
