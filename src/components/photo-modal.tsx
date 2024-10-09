@@ -45,16 +45,19 @@ export function PhotoModal({ photo }: PhotoModalProps) {
           className="w-full mt-6 rounded-md h-52 md:h-[460px]" 
           alt={`Foto de autor ${photo.author}`}
         />
-        <Dialog.Description className="w-full">
+        <Dialog.Description className="w-full" asChild>
           <ul className="rounded-sm px-2 py-4 w-full flex flex-col gap-2">
             <li className="flex justify-between"><span className="font-bold">Autor:</span> {photo.author}</li>
             <li className="flex justify-between"><span className="font-bold">Largura:</span> {photo.width}</li>
             <li className="flex justify-between"><span className="font-bold">Altura:</span> {photo.height}</li>
           </ul>
         </Dialog.Description>
-        <Dialog.Close className="w-full bg-emerald-500 p-3 mt-4 rounded-md" aria-label="Voltar">
-          Voltar
+        <Dialog.Close className="w-full bg-emerald-500 p-3 mt-4 rounded-md" asChild>
+          <button>
+            <span className="sr-only">Voltar</span>
+          </button>
         </Dialog.Close>
+
       </div> 
     </Dialog.Content>
   );
